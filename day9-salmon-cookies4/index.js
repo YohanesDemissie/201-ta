@@ -116,6 +116,8 @@ function handleSubmit(event) { // add a new store
 console.log(store) //to print new store in console
 console.log(Store.allLocations); // to see new store in array
 
+store.render();
+
 }
 
 addForm.addEventListener('submit', handleSubmit, )
