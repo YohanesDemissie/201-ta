@@ -1,9 +1,10 @@
 'use strict'
 
-var hours = ['6am', '7am', '8am', '9am', '10am'];
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm'];
 var thead = document.getElementsByTagName('thead')[0]; //
 var tbody = document.getElementsByTagName('tbody')[0]; //
 var tfoot = document.getElementsByTagName('tfoot')[0]; //
+var addForm = document.getElementById('add-location');
 
 function Store (location, minCustomersPerHour, maxCustomersPerHour, avgCookiesPerSale) {
   this.location = location;
@@ -102,6 +103,22 @@ function renderFooter() {
   }
   addElement('th', grandTotal, tr)
 }
+
+function handleSubmit(event) { // add a new store
+  event.preventDefault(); //prevents default behavior 
+  var locationName = event.target.locName.value;
+  var min = parseInt(event.target.min.value); //parseInt transfers number value to string
+  var max = parseInt(event.target.max.value);
+  var avg = parseFloat(event.target.avg.value); //parseFloat rounds the number
+
+  var store = new Store(locationName, min, max, avg);
+
+console.log(store) //to print new store in console
+console.log(Store.allLocations); // to see new store in array
+
+}
+
+addForm.addEventListener('submit', handleSubmit, )
 
 //Instantiate prototypes to new stores
 new Store('Pike Place Market', 22, 65, 6.3);
