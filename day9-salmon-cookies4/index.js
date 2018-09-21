@@ -27,6 +27,7 @@ Store.prototype.render = function() {
   for( var i = 0;  i < this.averageCookiesEachHour.length; i++) {
     addElement('td', this.averageCookiesEachHour[i], tr);
   }
+  addElement('td', this.totalCookies, tr)
 }
 
 Store.prototype.getSales = function () {
@@ -72,6 +73,7 @@ function renderHeader() {
     // tr.appendChild(hourTH);
   }
   //thead.appendChild(tr)
+  addElement('th', 'Total', tr);
 }
 
 function renderStores() {
