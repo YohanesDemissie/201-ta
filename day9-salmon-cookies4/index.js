@@ -20,6 +20,15 @@ function Store (location, minCustomersPerHour, maxCustomersPerHour, avgCookiesPe
 
 Store.allLocations = []; //stores all stores and data in this array
 
+Store.prototype.render = function() {
+  var tr = addElement('tr', '', tbody);
+  addElement('td', this.location, tr);
+
+  for( var i = 0;  i < this.averageCookiesEachHour.length; i++) {
+    addElement('td', this.averageCookiesEachHour[i], tr);
+  }
+}
+
 Store.prototype.getSales = function () {
   for (var i = 0; i < hours.length; i++) {
     var numberOfCustomers = rando(
@@ -68,7 +77,7 @@ function renderHeader() {
 function renderStores() {
   tbody.innerHTML = '';
   for( var i = 0; i < Store.allLocations.length; i++) {
-    Store.location[i].render();
+    Store.allLocations[i].render();
   }
 }
 
@@ -80,6 +89,7 @@ new Store('Cap Hill', 20, 28, 2.3);
 new Store('Alki', 2, 16, 4.6);
 
 renderHeader();
+renderStores();
 
 console.log(Store.allLocations)
 //DEMO STOPS HERE
