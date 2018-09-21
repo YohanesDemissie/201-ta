@@ -83,6 +83,26 @@ function renderStores() {
   }
 }
 
+function renderFooter() {
+  tfoot.innerHTML = ''; //this clears the row for content to be added below
+  var tr = addElement('tr', '', tfoot);
+  addElement('th', 'Hourly Total', tr);
+
+  var grandTotal = 0;
+
+  for( var i = 0; i < hours.length; i++) {
+    var hourTotal = 0;
+    for( var j = 0; j < Store.allLocations.length; j++) {
+      hourTotal += Store.allLocations[j].averageCookiesEachHour[i];
+
+      grandTotal += Store.allLocations[j].averageCookiesEachHour[i];
+
+    }
+    addElement('th', hourTotal, tr)
+  }
+  addElement('th', grandTotal, tr)
+}
+
 //Instantiate prototypes to new stores
 new Store('Pike Place Market', 22, 65, 6.3);
 new Store('SeaTac', 3, 24, 1.2);
@@ -92,6 +112,7 @@ new Store('Alki', 2, 16, 4.6);
 
 renderHeader();
 renderStores();
+renderFooter();
 
 console.log(Store.allLocations)
 //DEMO STOPS HERE
