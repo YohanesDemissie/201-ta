@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM DEMO</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <ul id="stuff">
+      <li>Item a</li>
+        <li>Item b</li>
+          <li>Item c</li>
+    </ul>
+
+    <ul id="newStuff">
+    </ul>
+
+    <script>
+      // Find Our <ul> JOHN
+      var stuffList = document.getElementById("stuff"); //theUl
+      //My version
+      var newStuff = document.getElementById("newStuff");
+
+      // Create a new List Item in the DOM JOHN
+      var newLi = document.createElement('li'); //liEl
+      //My Version
+      var newNewLi = document.createElement('li');
+
+      // Give it some text JOHN
+      newLi.textContent = "New List Item!"; // liEl.textContent
+      // My Version
+      newNewLi.textContent = "item 7";
+
+      // Add it to the end of the UL JOHN
+      stuffList.appendChild(newLi);
+      //My Version
+      newStuff.appendChild(newNewLi);
+
+      // Change the UL to have the "bald" class on it (turns it red) JOHN
+      stuffList.classList.add('bald')
+      // My Version
+      newStuff.classList.add('myStyle');
+
+    </script>
+  </body>
+</html>
